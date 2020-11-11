@@ -17,8 +17,8 @@ export class FeedComponent implements OnInit {
   postagem: Postagem = new Postagem()
   listaPostagem: Postagem[]
 
-  tema: Tema= new Tema()
-  listaTema: Tema[]
+  tema: Tema = new Tema()
+  listaTemas: Tema[]
   idTema: number
 
   constructor(
@@ -26,14 +26,14 @@ export class FeedComponent implements OnInit {
     private temaService: TemaService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     window.scroll(0,0)
 
     this.findAllPostagens()
     this.findAllTemas()
   }
 
-  findAllPostagens(){
+  findAllPostagens() {
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
       this.listaPostagem = resp
     })
@@ -59,7 +59,7 @@ export class FeedComponent implements OnInit {
     //o metodo subscribe transforma json em objeto
   findAllTemas(){
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-      this.listaTema = resp
+      this.listaTemas = resp
     })
   }
 

@@ -19,8 +19,14 @@ var PostagemService = /** @class */ (function () {
     PostagemService.prototype.getAllPostagens = function () {
         return this.http.get('http://localhost:8080/postagens', this.token);
     };
+    PostagemService.prototype.getByIdPostagem = function (id) {
+        return this.http.get("http://localhost:8080/postagem/" + id, this.token);
+    };
     PostagemService.prototype.postPostagem = function (postagem) {
         return this.http.post('http://localhost:8080/postagens', postagem, this.token);
+    };
+    PostagemService.prototype.putPostagem = function (postagem) {
+        return this.http.put('http://localhost:8080/postagens', postagem, this.token);
     };
     PostagemService = __decorate([
         core_1.Injectable({

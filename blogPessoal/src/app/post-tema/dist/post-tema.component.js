@@ -22,7 +22,7 @@ var PostTemaComponent = /** @class */ (function () {
     PostTemaComponent.prototype.findAllTemas = function () {
         var _this = this;
         this.temaService.getAllTemas().subscribe(function (resp) {
-            _this.listaTema = resp;
+            _this.listaTemas = resp;
         });
     };
     PostTemaComponent.prototype.findByIdTema = function () {

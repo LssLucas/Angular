@@ -11,7 +11,7 @@ import { TemaService } from '../service/tema.service';
 export class PostTemaComponent implements OnInit {
 
   tema: Tema= new Tema()
-  listaTema: Tema[]
+  listaTemas: Tema[]
 
   constructor(
     private temaService: TemaService,
@@ -25,7 +25,7 @@ export class PostTemaComponent implements OnInit {
     //o metodo subscribe transforma json em objeto
     findAllTemas(){
       this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-        this.listaTema = resp
+        this.listaTemas = resp
       })
     }
   
