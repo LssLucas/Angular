@@ -22,6 +22,13 @@ var perfil_lateral_component_1 = require("./perfil-lateral/perfil-lateral.compon
 var login_component_1 = require("./login/login.component");
 var cadastro_component_1 = require("./cadastro/cadastro.component");
 var ngx_order_pipe_1 = require("ngx-order-pipe");
+var post_tema_component_1 = require("./post-tema/post-tema.component");
+var put_postagem_component_1 = require("./put-postagem/put-postagem.component");
+var put_tema_component_1 = require("./put-tema/put-tema.component");
+var delete_postagem_component_1 = require("./delete-postagem/delete-postagem.component");
+var delete_tema_component_1 = require("./delete-tema/delete-tema.component");
+var alertas_component_1 = require("./alertas/alertas.component");
+var modal_1 = require("ngx-bootstrap/modal");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -35,7 +42,13 @@ var AppModule = /** @class */ (function () {
                 feed_component_1.FeedComponent,
                 perfil_lateral_component_1.PerfilLateralComponent,
                 login_component_1.LoginComponent,
-                cadastro_component_1.CadastroComponent
+                cadastro_component_1.CadastroComponent,
+                post_tema_component_1.PostTemaComponent,
+                put_postagem_component_1.PutPostagemComponent,
+                put_tema_component_1.PutTemaComponent,
+                delete_postagem_component_1.DeletePostagemComponent,
+                delete_tema_component_1.DeleteTemaComponent,
+                alertas_component_1.AlertasComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -43,7 +56,8 @@ var AppModule = /** @class */ (function () {
                 angular_fontawesome_1.FontAwesomeModule,
                 http_1.HttpClientModule,
                 forms_1.FormsModule,
-                ngx_order_pipe_1.OrderModule
+                ngx_order_pipe_1.OrderModule,
+                modal_1.ModalModule.forRoot()
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

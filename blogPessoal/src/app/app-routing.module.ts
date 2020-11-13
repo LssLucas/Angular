@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'feed', component: FeedComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cadastro', component: CadastroComponent},
-  {path: 'feed/cadastro-tema', component: PostTemaComponent},
+  {path: 'cadastro-tema', component: PostTemaComponent},
   {path: 'editar-post/:id', component: PutPostagemComponent},
   {path: 'delete-post/:id', component: DeletePostagemComponent},
   {path: 'editar-tema/:id', component: PutTemaComponent},

@@ -10,9 +10,10 @@ exports.PostTemaComponent = void 0;
 var core_1 = require("@angular/core");
 var Tema_1 = require("../model/Tema");
 var PostTemaComponent = /** @class */ (function () {
-    function PostTemaComponent(temaService, router) {
+    function PostTemaComponent(temaService, router, alert) {
         this.temaService = temaService;
         this.router = router;
+        this.alert = alert;
         this.tema = new Tema_1.Tema();
     }
     PostTemaComponent.prototype.ngOnInit = function () {
@@ -34,13 +35,13 @@ var PostTemaComponent = /** @class */ (function () {
     PostTemaComponent.prototype.cadastrar = function () {
         var _this = this;
         if (this.tema.descricao == null) {
-            alert('Preencha o campo de nome do tema corretamente');
+            this.alert.showAlertDanger('Preencha o campo de nome do tema corretamente');
         }
         else {
             this.temaService.postTema(this.tema).subscribe(function (resp) {
                 _this.tema = resp;
                 _this.router.navigate(['/feed']);
-                alert('Tema cadastrado com sucesso!');
+                _this.alert.showAlertSuccess('Tema cadastrado com sucesso!');
             });
         }
     };

@@ -8,18 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.PutPostagemComponent = void 0;
 var core_1 = require("@angular/core");
-var Postagem_1 = require("../model/Postagem");
 var Tema_1 = require("../model/Tema");
+var Postagem_1 = require("../model/Postagem");
 var PutPostagemComponent = /** @class */ (function () {
-    function PutPostagemComponent(postagemService, temaService, router, route) {
+    function PutPostagemComponent(postagemService, temaService, router, route, alert) {
         this.postagemService = postagemService;
         this.temaService = temaService;
         this.router = router;
         this.route = route;
+        this.alert = alert;
         this.postagem = new Postagem_1.Postagem();
         this.tema = new Tema_1.Tema();
     }
     PutPostagemComponent.prototype.ngOnInit = function () {
+        window.scroll(0, 0);
         this.idPost = this.route.snapshot.params["id"];
         this.findByIdPostagem(this.idPost);
         this.findAllTemas();
@@ -37,10 +39,10 @@ var PutPostagemComponent = /** @class */ (function () {
         this.postagemService.putPostagem(this.postagem).subscribe(function (resp) {
             _this.postagem = resp;
             _this.router.navigate(['/feed']);
-            alert('Postagem alterada com sucesso');
+            _this.alert.showAlertSuccess('Postagem alterada com sucesso');
         }, function (error) {
             if (error.status == '500') {
-                alert('Preencha todos os campos corretamente antes de enviar!!!');
+                _this.alert.showAlertDanger('Preencha todos os campos corretamente antes de enviar!!!');
             }
         });
     };

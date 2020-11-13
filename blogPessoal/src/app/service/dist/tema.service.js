@@ -25,6 +25,15 @@ var TemaService = /** @class */ (function () {
     TemaService.prototype.postTema = function (tema) {
         return this.http.post('http://localhost:8080/tema', tema, this.token);
     };
+    TemaService.prototype.putTema = function (tema) {
+        return this.http.put('http://localhost:8080/tema', tema, this.token);
+    };
+    TemaService.prototype.deleteTema = function (nome) {
+        return this.http["delete"]("http://localhost:8080/tema/nome/" + nome, this.token);
+    };
+    TemaService.prototype.getByNomeTema = function (nome) {
+        return this.http.get("http://localhost:8080/tema/nome/" + nome, this.token);
+    };
     TemaService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

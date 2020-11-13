@@ -11,9 +11,10 @@ var core_1 = require("@angular/core");
 var Postagem_1 = require("../model/Postagem");
 var Tema_1 = require("../model/Tema");
 var FeedComponent = /** @class */ (function () {
-    function FeedComponent(postagemService, temaService) {
+    function FeedComponent(postagemService, temaService, alert) {
         this.postagemService = postagemService;
         this.temaService = temaService;
+        this.alert = alert;
         this.postagem = new Postagem_1.Postagem();
         this.tema = new Tema_1.Tema();
     }
@@ -25,7 +26,7 @@ var FeedComponent = /** @class */ (function () {
     FeedComponent.prototype.findAllPostagens = function () {
         var _this = this;
         this.postagemService.getAllPostagens().subscribe(function (resp) {
-            _this.listaPostagem = resp;
+            _this.listaPostagens = resp;
         });
     };
     FeedComponent.prototype.publicar = function () {
@@ -33,14 +34,25 @@ var FeedComponent = /** @class */ (function () {
         this.tema.id = this.idTema;
         this.postagem.tema = this.tema;
         if (this.postagem.titulo == null || this.postagem.texto == null || this.postagem.tema == null) {
-            alert('Preencha todos os campos antes de publicar');
+            this.alert.showAlertDanger('Preencha todos os campos antes de publicar');
         }
         else {
             this.postagemService.postPostagem(this.postagem).subscribe(function (resp) {
                 _this.postagem = resp;
                 _this.postagem = new Postagem_1.Postagem();
-                alert('Postagem realizada com sucesso');
+                _this.alert.showAlertSuccess('Postagem realizada com sucesso');
                 _this.findAllPostagens();
+            });
+        }
+    };
+    FeedComponent.prototype.findByTituloPostagem = function () {
+        var _this = this;
+        if (this.titulo === '') {
+            this.findAllPostagens();
+        }
+        else {
+            this.postagemService.getByTituloPostagem(this.titulo).subscribe(function (resp) {
+                _this.listaPostagens = resp;
             });
         }
     };
@@ -56,6 +68,17 @@ var FeedComponent = /** @class */ (function () {
         this.temaService.getByIdTema(this.idTema).subscribe(function (resp) {
             _this.tema = resp;
         });
+    };
+    FeedComponent.prototype.findByNomeTema = function () {
+        var _this = this;
+        if (this.nomeTema === '') {
+            this.findAllTemas();
+        }
+        else {
+            this.temaService.getByNomeTema(this.nomeTema).subscribe(function (resp) {
+                _this.listaTemas = resp;
+            });
+        }
     };
     FeedComponent = __decorate([
         core_1.Component({

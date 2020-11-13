@@ -24,7 +24,7 @@ var routes = [
     { path: 'feed', component: feed_component_1.FeedComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'cadastro', component: cadastro_component_1.CadastroComponent },
-    { path: 'feed/cadastro-tema', component: post_tema_component_1.PostTemaComponent },
+    { path: 'cadastro-tema', component: post_tema_component_1.PostTemaComponent },
     { path: 'editar-post/:id', component: put_postagem_component_1.PutPostagemComponent },
     { path: 'delete-post/:id', component: delete_postagem_component_1.DeletePostagemComponent },
     { path: 'editar-tema/:id', component: put_tema_component_1.PutTemaComponent },
