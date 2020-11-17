@@ -9,11 +9,12 @@ exports.__esModule = true;
 exports.TemaService = void 0;
 var http_1 = require("@angular/common/http");
 var core_1 = require("@angular/core");
+var environment_prod_1 = require("./../../environments/environment.prod");
 var TemaService = /** @class */ (function () {
     function TemaService(http) {
         this.http = http;
         this.token = {
-            headers: new http_1.HttpHeaders().set('Authorization', localStorage.getItem('token'))
+            headers: new http_1.HttpHeaders().set('Authorization', environment_prod_1.environment.token)
         };
     }
     TemaService.prototype.getAllTemas = function () {
@@ -28,8 +29,8 @@ var TemaService = /** @class */ (function () {
     TemaService.prototype.putTema = function (tema) {
         return this.http.put('http://localhost:8080/tema', tema, this.token);
     };
-    TemaService.prototype.deleteTema = function (nome) {
-        return this.http["delete"]("http://localhost:8080/tema/nome/" + nome, this.token);
+    TemaService.prototype.deleteTema = function (id) {
+        return this.http["delete"]("http://localhost:8080/tema/nome/" + id, this.token);
     };
     TemaService.prototype.getByNomeTema = function (nome) {
         return this.http.get("http://localhost:8080/tema/nome/" + nome, this.token);

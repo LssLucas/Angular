@@ -9,11 +9,12 @@ exports.__esModule = true;
 exports.PostagemService = void 0;
 var http_1 = require("@angular/common/http");
 var core_1 = require("@angular/core");
+var environment_prod_1 = require("./../../environments/environment.prod");
 var PostagemService = /** @class */ (function () {
     function PostagemService(http) {
         this.http = http;
         this.token = {
-            headers: new http_1.HttpHeaders().set('Authorization', localStorage.getItem('token'))
+            headers: new http_1.HttpHeaders().set('Authorization', environment_prod_1.environment.token)
         };
     }
     PostagemService.prototype.getAllPostagens = function () {
@@ -29,7 +30,7 @@ var PostagemService = /** @class */ (function () {
         return this.http.put('http://localhost:8080/postagens', postagem, this.token);
     };
     PostagemService.prototype.getByTituloPostagem = function (titulo) {
-        return this.http.get("http://localhost:9000/postagens/titulo/" + titulo, this.token);
+        return this.http.get("http://localhost:8080/postagens/titulo/" + titulo, this.token);
     };
     PostagemService.prototype.deletePostagem = function (id) {
         return this.http["delete"]("http://localhost:8080/postagens/" + id, this.token);

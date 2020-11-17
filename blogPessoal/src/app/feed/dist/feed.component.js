@@ -8,18 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.FeedComponent = void 0;
 var core_1 = require("@angular/core");
+var environment_prod_1 = require("./../../environments/environment.prod");
 var Postagem_1 = require("../model/Postagem");
 var Tema_1 = require("../model/Tema");
 var FeedComponent = /** @class */ (function () {
-    function FeedComponent(postagemService, temaService, alert) {
+    function FeedComponent(postagemService, temaService, alert, router) {
         this.postagemService = postagemService;
         this.temaService = temaService;
         this.alert = alert;
+        this.router = router;
         this.postagem = new Postagem_1.Postagem();
         this.tema = new Tema_1.Tema();
     }
     FeedComponent.prototype.ngOnInit = function () {
         window.scroll(0, 0);
+        var token = environment_prod_1.environment.token;
+        if (token == '') {
+            this.router.navigate(['/login']);
+            this.alert.showAlertInfo('Faça o login para acessar o feed.');
+        }
         this.findAllPostagens();
         this.findAllTemas();
     };
